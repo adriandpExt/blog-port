@@ -10,6 +10,13 @@ import { AnimatedIcon } from "~/components";
 import theme from "~/theme";
 
 const Home = (): ReactElement => {
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       id="home"
@@ -63,7 +70,12 @@ const Home = (): ReactElement => {
             A developer that crafting clean, elegant, and efficient code,
             ensuring robust and visually appealing solutions.
           </Typography>
-          <Button variant="contained" sx={{ width: "10rem" }} color="info">
+          <Button
+            variant="contained"
+            sx={{ width: "10rem" }}
+            color="info"
+            onClick={() => scrollToSection("about")}
+          >
             Learn More
           </Button>
         </Stack>

@@ -11,6 +11,13 @@ const MuiFooter = styled("footer")(({ theme }) => ({
   padding: "5rem 7rem",
 }));
 
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  color: theme.palette.background.default,
+  ":hover": {
+    cursor: "pointer",
+  },
+}));
+
 export const Footer = (props: FooterProps): ReactElement => {
   const { menuLabel } = props;
 
@@ -67,18 +74,12 @@ export const Footer = (props: FooterProps): ReactElement => {
           lg={6}
           sx={{ display: "flex", justifyContent: "start" }}
         >
-          <Typography
-            sx={{
-              ":hover": {
-                cursor: "pointer",
-              },
-            }}
+          <StyledTypography
             variant="subtitle1"
-            color="white"
             onClick={() => scrollToSection("home")}
           >
             @ {getYear()} Adrian Del Prado
-          </Typography>
+          </StyledTypography>
         </Grid>
 
         <Grid
@@ -91,18 +92,12 @@ export const Footer = (props: FooterProps): ReactElement => {
         >
           <Stack direction={"row"} gap={4}>
             {menuLabel?.map((item) => (
-              <Typography
+              <StyledTypography
                 key={item}
-                sx={{
-                  color: "#fff",
-                  ":hover": {
-                    cursor: "pointer",
-                  },
-                }}
                 onClick={() => scrollToSection(item)}
               >
                 {item}
-              </Typography>
+              </StyledTypography>
             ))}
           </Stack>
         </Grid>

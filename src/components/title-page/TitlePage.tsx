@@ -1,5 +1,8 @@
-import Typography from "@mui/material/Typography";
 import { ReactElement } from "react";
+
+import Typography from "@mui/material/Typography";
+
+import theme from "~/theme";
 
 export const TitlePage = (props: {
   title: string;
@@ -8,7 +11,10 @@ export const TitlePage = (props: {
   const { title, textAlign = "left" } = props;
 
   return (
-    <Typography variant="h1" sx={{ textAlign: textAlign }}>
+    <Typography
+      variant="h1"
+      sx={{ textAlign: textAlign, color: theme.palette.background.paper }}
+    >
       {title}
     </Typography>
   );
