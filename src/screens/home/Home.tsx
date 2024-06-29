@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
+import { ReactTyped } from "react-typed";
 
 // import imageHero from "~/assets/images/image-hero-desktop.png";
 import theme from "~/theme";
@@ -21,7 +22,7 @@ const Home = (): ReactElement => {
         sx={{
           height: "100%",
           width: "50%",
-          margin: "5rem 3rem 10rem 3rem",
+          margin: "10rem 3rem 10rem 3rem",
         }}
       >
         <Stack
@@ -33,22 +34,26 @@ const Home = (): ReactElement => {
           <Typography
             sx={{
               color: theme.palette.background.default,
-             
             }}
-            variant="h3"
+            variant="h2"
           >
-            Adrian Del Prado
+            <ReactTyped strings={["Adrian Del Prado"]} typeSpeed={100} />
           </Typography>
 
           <Typography
             sx={{ color: theme.palette.background.default }}
             variant="h5"
           >
-            Frontend Developer | Software Developer
+            <ReactTyped
+              strings={["FRONTEND DEVELOPER", " SOFTWARE DEVELOPER"]}
+              typeSpeed={100}
+              backSpeed={100}
+              loop
+            />
           </Typography>
 
           <Typography variant="h6" textAlign={"justify"}>
-            Frontend developer crafting clean, elegant, and efficient code,
+            A developer that crafting clean, elegant, and efficient code,
             ensuring robust and visually appealing solutions.
           </Typography>
 

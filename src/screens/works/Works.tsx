@@ -1,33 +1,73 @@
 import { Grid, Stack, Typography } from "@mui/material";
-import { ReactElement } from "react";
+import { ReactElement, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 import { WorksCard } from "~/components/works-components";
 import { projectsList } from "./utils";
 import { TitlePage } from "~/components";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+};
+
 const Works = (): ReactElement => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
   return (
-    <Stack id="works" gap={5} sx={{ padding: 10, marginBottom: 5 }}>
-      <TitlePage textAlign="right" title="works." />
+    <motion.div
+      id="works"
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+    >
+      <Stack gap={5} sx={{ padding: 10, marginBottom: 5 }}>
+        <TitlePage textAlign="right" title="works." />
 
-      <Stack>
-        <Typography variant="h5">
-          Check out some of my latest projects.
-        </Typography>
-        <Typography variant="subtitle1">
-          I've worked at start-ups, tech companies and corporates on a range of
-          different projects, including design systems, websites and apps.
-        </Typography>
+        <Stack>
+          <Typography variant="h5">
+            Check out some of my latest projects.
+          </Typography>
+          <Typography variant="subtitle1">
+            I've worked at start-ups, tech companies and corporates on a range
+            of different projects, including design systems, websites and apps.
+          </Typography>
+        </Stack>
+
+        <Grid container spacing={4}>
+          {projectsList?.map((item, i) => (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+              <motion.div variants={itemVariants}>
+                <WorksCard
+                  image={item.image}
+                  title={item.title}
+                  tech={item.tech}
+                />
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
       </Stack>
-
-      <Grid container spacing={4}>
-        {projectsList?.map((item, i) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
-            <WorksCard image={item.image} title={item.title} tech={item.tech} />
-          </Grid>
-        ))}
-      </Grid>
-    </Stack>
+    </motion.div>
   );
 };
 
