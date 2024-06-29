@@ -1,7 +1,16 @@
 import { ReactElement } from "react";
 
 import MuiAppbar from "@mui/material/AppBar";
-import { Avatar, Box, Button, Stack, Toolbar, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  Stack,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import logo from "~/assets/logo.png";
@@ -18,6 +27,9 @@ interface AppbarProps {
 
 export const Appbar = (props: AppbarProps): ReactElement => {
   const { menuLabel } = props;
+
+  const themes = useTheme();
+  const isSmallScreen = useMediaQuery(themes.breakpoints.down("md"));
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -48,7 +60,7 @@ export const Appbar = (props: AppbarProps): ReactElement => {
           >
             <img src={logo} alt="logo" width={50} height={50} />
           </Avatar>
-          <Typography variant="h5">ADRIAN.</Typography>
+          {!isSmallScreen && <Typography variant="h5">ADRIAN.</Typography>}
         </Stack>
 
         <Box

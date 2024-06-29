@@ -11,7 +11,7 @@ export const Skills = (): ReactElement => {
     <>
       <BarChart
         xAxis={[{ scaleType: "band", data: techNames }]}
-        series={[{ data: ratings, label: "TECH STACKS", color: "#254336" }]}
+        series={[{ data: ratings, label: "TECH STACKS", color: "#F4A261" }]}
         height={500}
       />
     </>
