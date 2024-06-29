@@ -13,6 +13,13 @@ const MuiFooter = styled("footer")(({ theme }) => ({
 export const Footer = (props: FooterProps): ReactElement => {
   const { menuLabel } = props;
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const getYear = (): number => {
     const date = new Date();
 
@@ -47,7 +54,16 @@ export const Footer = (props: FooterProps): ReactElement => {
 
         <Stack direction={"row"} gap={4}>
           {menuLabel?.map((item) => (
-            <Typography key={item} sx={{ color: "#fff" }}>
+            <Typography
+              key={item}
+              sx={{
+                color: "#fff",
+                ":hover": {
+                  cursor: "pointer",
+                },
+              }}
+              onClick={() => scrollToSection(item)}
+            >
               {item}
             </Typography>
           ))}

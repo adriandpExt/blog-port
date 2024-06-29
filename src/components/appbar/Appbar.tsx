@@ -19,6 +19,13 @@ interface AppbarProps {
 export const Appbar = (props: AppbarProps): ReactElement => {
   const { menuLabel } = props;
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <StyledMuiAppBar>
       <Toolbar
@@ -45,7 +52,11 @@ export const Appbar = (props: AppbarProps): ReactElement => {
           }}
         >
           {menuLabel?.map((item) => (
-            <Button key={item} sx={{ color: "#fff" }}>
+            <Button
+              key={item}
+              sx={{ color: "#fff" }}
+              onClick={() => scrollToSection(item)}
+            >
               {item}
             </Button>
           ))}

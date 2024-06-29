@@ -7,6 +7,7 @@ import theme from "~/theme";
 const Home = (): ReactElement => {
   return (
     <Box
+      id="home"
       sx={{
         height: "100%",
         margin: "5rem 3rem 10rem 3rem",

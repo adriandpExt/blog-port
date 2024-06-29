@@ -7,7 +7,7 @@ import { TitlePage } from "~/components";
 
 const Works = (): ReactElement => {
   return (
-    <Stack gap={5} sx={{ padding: 10, marginBottom: 5 }}>
+    <Stack id="works" gap={5} sx={{ padding: 10, marginBottom: 5 }}>
       <TitlePage textAlign="right" title="works." />
 
       <Stack>

@@ -4,18 +4,19 @@ import Typography from "@mui/material/Typography";
 import { ReactElement } from "react";
 
 import { CardImage, TitlePage } from "~/components";
+import Skills from "~/components/about-components/Skills";
 
 const About = (): ReactElement => {
   return (
     <>
-      <Stack gap={5} sx={{ padding: 10 }}>
+      <Stack id="about" gap={5} sx={{ padding: 10 }}>
         <TitlePage title="about." />
 
         <Grid container spacing={4}>
           <Grid item xs={12} sm={12} md={12} lg={6}>
             <Stack gap={3}>
               <Typography>
-                I'm a Frontend Developer and a Software Developer.
+                A Frontend Developer and a Software Developer.
               </Typography>
 
               <Typography textAlign={"justify"}>
@@ -46,7 +47,7 @@ const About = (): ReactElement => {
         <Divider color="whitesmoke" />
 
         <Box>
-          <Typography>Skills</Typography>
+          <Skills />
         </Box>
       </Stack>
     </>
