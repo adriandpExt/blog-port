@@ -48,8 +48,17 @@ export const Footer = (props: FooterProps): ReactElement => {
         padding={5}
         alignItems={"center"}
       >
-        <Typography variant="caption" color="white">
-          @{getYear()} Adrian Del Prado
+        <Typography
+          sx={{
+            ":hover": {
+              cursor: "pointer",
+            },
+          }}
+          variant="caption"
+          color="white"
+          onClick={() => scrollToSection("home")}
+        >
+          @ {getYear()} Adrian Del Prado
         </Typography>
 
         <Stack direction={"row"} gap={4}>

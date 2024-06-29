@@ -37,7 +37,15 @@ export const Appbar = (props: AppbarProps): ReactElement => {
         }}
       >
         <Stack gap={1} direction={"row"} alignItems={"center"}>
-          <Avatar sx={{ backgroundColor: theme.palette.background.default }}>
+          <Avatar
+            sx={{
+              backgroundColor: theme.palette.background.default,
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+            onClick={() => scrollToSection("home")}
+          >
             <img src={logo} alt="logo" width={50} height={50} />
           </Avatar>
           <Typography variant="h5">ADRIAN.</Typography>
