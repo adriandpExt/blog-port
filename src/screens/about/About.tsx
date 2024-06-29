@@ -1,12 +1,15 @@
-import { Box, Divider, Grid } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
-import { motion, useAnimation } from "framer-motion";
 import { ReactElement, useEffect } from "react";
+
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { CardImage, TitlePage } from "~/components";
-import Skills from "~/components/about-components/Skills";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+
+import { CardImage, Skills, TitlePage } from "~/components";
 
 const About = (): ReactElement => {
   const controls = useAnimation();
@@ -23,6 +26,25 @@ const About = (): ReactElement => {
     visible: { opacity: 1, y: 0, transition: { duration: 5 } },
   };
 
+  const renderIntro = (): ReactElement => {
+    return (
+      <Stack gap={3}>
+        <Typography>A Frontend Developer and Software Developer.</Typography>
+
+        <motion.div animate={{ x: [0, 100, 0] }}>
+          <Typography textAlign={"justify"}>
+            Since 2022, I embarked on my journey into Front-End and Software
+            Development. With a passion for creating seamless and user-friendly
+            web applications, I specialize in JavaScript and have extensive
+            experience with frameworks like React and Vue. My expertise extends
+            to TypeScript and backend development using Node.js, enabling me to
+            build comprehensive and robust applications.
+          </Typography>
+        </motion.div>
+      </Stack>
+    );
+  };
+
   return (
     <motion.div
       id="about"
@@ -36,23 +58,7 @@ const About = (): ReactElement => {
 
         <Grid container spacing={4}>
           <Grid item xs={12} sm={12} md={12} lg={6}>
-            <Stack gap={3}>
-              <Typography>
-                A Frontend Developer and Software Developer.
-              </Typography>
-
-              <motion.div animate={{ x: [0, 100, 0] }}>
-                <Typography textAlign={"justify"}>
-                  Since 2022, I embarked on my journey into Front-End and
-                  Software Development. With a passion for creating seamless and
-                  user-friendly web applications, I specialize in JavaScript and
-                  have extensive experience with frameworks like React and Vue.
-                  My expertise extends to TypeScript and backend development
-                  using Node.js, enabling me to build comprehensive and robust
-                  applications.
-                </Typography>
-              </motion.div>
-            </Stack>
+            {renderIntro()}
           </Grid>
 
           <Grid

@@ -10,7 +10,7 @@ export const projectsList = [
   {
     image: shop1,
     title: "Shop E-Commerce Design",
-    tech: ["React", "Typescript", "Json-Server", "Tailwind"],
+    tech: ["React", "Typescript", "Json-Server", "Tailwind", "Daisy UI"],
   },
   {
     image:

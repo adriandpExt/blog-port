@@ -1,8 +1,12 @@
-import { Box, Button, Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
 import { ReactTyped } from "react-typed";
 
-// import imageHero from "~/assets/images/image-hero-desktop.png";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+
+import { AnimatedIcon } from "~/components";
 import theme from "~/theme";
 
 const Home = (): ReactElement => {
@@ -26,11 +30,15 @@ const Home = (): ReactElement => {
         }}
       >
         <Stack
-          gap={2}
+          gap={3}
           padding={5}
           sx={{ color: theme.palette.background.default }}
         >
-          <Typography variant="h3">Hey!</Typography>
+          <Stack direction={"row"} alignItems={"center"}>
+            <AnimatedIcon icon="developer" />
+            <Typography variant="h3">Hey!</Typography>
+          </Stack>
+
           <Typography
             sx={{
               color: theme.palette.background.default,
@@ -51,12 +59,10 @@ const Home = (): ReactElement => {
               loop
             />
           </Typography>
-
-          <Typography variant="h6" textAlign={"justify"}>
+          <Typography variant="h6">
             A developer that crafting clean, elegant, and efficient code,
             ensuring robust and visually appealing solutions.
           </Typography>
-
           <Button variant="contained" sx={{ width: "10rem" }} color="info">
             Learn More
           </Button>

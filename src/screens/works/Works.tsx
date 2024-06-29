@@ -1,11 +1,14 @@
-import { Grid, Stack, Typography } from "@mui/material";
 import { ReactElement, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { WorksCard } from "~/components/works-components";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+
+import { AnimatedIcon, TitlePage, WorksCard } from "~/components";
+
 import { projectsList } from "./utils";
-import { TitlePage } from "~/components";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -43,10 +46,14 @@ const Works = (): ReactElement => {
       <Stack gap={5} sx={{ padding: 10, marginBottom: 5 }}>
         <TitlePage textAlign="right" title="works." />
 
-        <Stack>
-          <Typography variant="h5">
-            Check out some of my latest projects.
-          </Typography>
+        <Stack gap={2}>
+          <Stack direction={"row"} alignItems={"center"} gap={2}>
+            <AnimatedIcon icon="block" size={60} />
+            <Typography variant="h5">
+              Check out some of my latest projects.
+            </Typography>
+          </Stack>
+
           <Typography variant="subtitle1">
             I've worked at start-ups, tech companies and corporates on a range
             of different projects, including design systems, websites and apps.
