@@ -43,7 +43,7 @@ const Works = (): ReactElement => {
       animate={controls}
       variants={containerVariants}
     >
-      <Stack gap={5} sx={{ padding: 10, marginBottom: 5 }}>
+      <Stack gap={5} sx={{ padding: 10 }}>
         <TitlePage textAlign="right" title="works." />
 
         <Stack gap={2}>
