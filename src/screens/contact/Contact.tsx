@@ -40,7 +40,7 @@ const Contact = (): ReactElement => {
     return (
       <form onSubmit={contactForm.handleSubmit}>
         <Grid container spacing={5}>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} lg={6}>
             <Stack gap={5}>
               <TextField
                 name="fullname"
@@ -75,7 +75,7 @@ const Contact = (): ReactElement => {
               />
             </Stack>
           </Grid>
-          <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Grid item xs={12} lg={6}>
             <TextField
               name="message"
               label="Message"
@@ -149,14 +149,14 @@ const Contact = (): ReactElement => {
       <TitlePage title="contact." />
 
       <Grid container alignItems={"center"} spacing={5}>
-        <Grid item xs={12} sm={12} md={12} lg={6}>
+        <Grid item xs={12} md={6}>
           <Typography variant="h5" color={"GrayText"}>
             Get in touch me via social media.
           </Typography>
 
           {renderSocialLinks()}
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={6}>
+        <Grid item xs={12} md={6}>
           {renderContactNumber()}
         </Grid>
       </Grid>

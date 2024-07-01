@@ -1,41 +1,69 @@
-import { ReactElement, useEffect, useState, useCallback, useRef } from "react";
-import MuiAppbar from "@mui/material/AppBar";
+import type { AppbarProps } from "./types";
 import {
-  Avatar,
-  Box,
-  Button,
-  Stack,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
+  ReactElement,
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+  ReactNode,
+} from "react";
+
+import { styled, useTheme } from "@mui/material/styles";
+
+import MenuSharpIcon from "@mui/icons-material/MenuSharp";
+import FileDownloadSharpIcon from "@mui/icons-material/FileDownloadSharp";
+
+import useMediaQuery from "@mui/material/useMediaQuery";
+import MuiAppbar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
 
 import logo from "~/assets/logo.png";
-import theme from "~/theme";
+
+import { DrawerMenu } from "./DrawerMenu";
+import { debounce } from "./utils";
 
 const StyledMuiAppBar = styled(MuiAppbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   height: "5rem",
 }));
 
-interface AppbarProps {
-  menuLabel: string[];
-}
+const MuiToolbar = styled(Toolbar)({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  flexGrow: 1,
+});
 
-const debounce = (func: () => void, wait: number) => {
-  let timeout: NodeJS.Timeout;
-  return () => {
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func(), wait);
-  };
-};
+const NavigationBox = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  width: "100%",
+});
+
+const MuiAvatar = styled(Avatar)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  ":hover": {
+    cursor: "pointer",
+  },
+}));
+
+const MuiIconButton = styled(IconButton)(({ theme }) => ({
+  color: theme.palette.background.default,
+}));
 
 export const Appbar = (props: AppbarProps): ReactElement => {
   const { menuLabel } = props;
 
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+
   const isScrolling = useRef<boolean>(false);
 
   const themes = useTheme();
@@ -83,43 +111,29 @@ export const Appbar = (props: AppbarProps): ReactElement => {
     };
   }, [handleScroll]);
 
-  return (
-    <StyledMuiAppBar>
-      <Toolbar
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          height: "100%",
-        }}
-      >
-        <Stack gap={1} direction={"row"} alignItems={"center"}>
-          <Avatar
-            sx={{
-              backgroundColor: theme.palette.background.default,
-              ":hover": {
-                cursor: "pointer",
-              },
-            }}
-            onClick={() => scrollToSection("home")}
-          >
-            <img src={logo} alt="logo" width={50} height={50} />
-          </Avatar>
-          {!isSmallScreen && (
-            <Typography variant="h5" fontFamily="Ransock">
-              ADRIAN.
-            </Typography>
-          )}
-        </Stack>
+  const renderBurgerMenu = (): ReactElement => {
+    return (
+      <Stack gap={1} direction={"row"} alignItems={"center"}>
+        <MuiAvatar onClick={() => scrollToSection("home")}>
+          <img src={logo} alt="logo" width={50} height={50} />
+        </MuiAvatar>
+        {!isSmallScreen ? (
+          <Typography variant="h5" fontFamily="Ransock">
+            ADRIAN.
+          </Typography>
+        ) : (
+          <MuiIconButton onClick={() => setOpenDrawer(true)}>
+            <MenuSharpIcon fontSize="large" />
+          </MuiIconButton>
+        )}
+      </Stack>
+    );
+  };
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
+  const renderCenterMenu = (): ReactNode => {
+    return (
+      !isSmallScreen && (
+        <NavigationBox>
           {menuLabel?.map((item) => (
             <Button
               key={item}
@@ -133,8 +147,36 @@ export const Appbar = (props: AppbarProps): ReactElement => {
               {item}
             </Button>
           ))}
-        </Box>
-      </Toolbar>
+        </NavigationBox>
+      )
+    );
+  };
+
+  return (
+    <StyledMuiAppBar>
+      <MuiToolbar>
+        {renderBurgerMenu()}
+
+        {renderCenterMenu()}
+
+        <Button
+          variant="contained"
+          href="https://drive.google.com/file/d/1f4PxPAWm7zZONOFaGRqayO5V4cDpBlTX/view?usp=drive_link"
+          download="adrian_del_prado_cv.pdf"
+          target="_blank"
+          sx={{ width: 200 }}
+          color="info"
+        >
+          <FileDownloadSharpIcon />
+          DOWNLOAD CV
+        </Button>
+      </MuiToolbar>
+
+      <DrawerMenu
+        menuLabel={menuLabel}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+      />
     </StyledMuiAppBar>
   );
 };
