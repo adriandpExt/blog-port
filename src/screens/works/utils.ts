@@ -1,6 +1,6 @@
 import empf1 from "~/assets/empf/empf1.png";
 import shop1 from "~/assets/shop/shop1.png";
-import lps from "~/assets/images/lenovo-pccw.jpg";
+import lps from "~/assets/images/lenovo-pccw.png";
 
 export const projectsList = [
   {

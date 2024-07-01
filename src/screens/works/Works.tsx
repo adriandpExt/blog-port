@@ -51,14 +51,16 @@ const Works = (): ReactElement => {
       <Stack gap={5} sx={{ padding: 10 }}>
         <TitlePage textAlign="right" title="works." />
 
-        <Stack direction={"row"} alignItems={"center"}>
+        <Stack direction={"row"} alignItems={"center"} gap={2}>
           <AnimatedIcon icon="cmd" size={60} />
           <Typography variant="h5">Work Experience</Typography>
         </Stack>
 
         <Stack direction={"row"} gap={2}>
           {workData.map((data, id) => (
-            <WorksExperience data={data} key={id} />
+            <motion.div variants={itemVariants}>
+              <WorksExperience data={data} key={id} />
+            </motion.div>
           ))}
         </Stack>
 

@@ -13,13 +13,13 @@ interface WorksExperienceProps {
 export const WorksExperience = (props: WorksExperienceProps): ReactElement => {
   const { data } = props;
   return (
-    <Card sx={{ maxWidth: 345, padding: 0.5 }}>
-      <CardMedia
-        sx={{ height: 100 }}
-        image={data?.imageSrc}
-        title={data?.imageSrc}
-      />
-      <CardContent sx={{ backgroundColor: "#fff" }}>
+    <Card sx={{ maxWidth: 345, padding: 1, background: "#fff" }}>
+      <CardContent sx={{ backgroundColor: "#EEEDEB" }}>
+        <CardMedia
+          sx={{ height: 100 }}
+          image={data?.imageSrc}
+          title={data?.imageSrc}
+        />
         <Typography gutterBottom variant="h6" component="div">
           {data?.jobTitle} @ {data?.company || ""}.
         </Typography>
