@@ -1,6 +1,14 @@
-import { Grid, Stack, Typography } from "@mui/material";
 import { ReactElement } from "react";
+
+import { Grid, IconButton, Stack, Typography } from "@mui/material";
+
 import { styled } from "@mui/material/styles";
+
+import { IconName } from "../svg-icons/utils";
+
+import { SvgIcons } from "../svg-icons";
+
+import { socialLinksFooter } from "./utils";
 
 interface FooterProps {
   menuLabel: string[];
@@ -35,34 +43,43 @@ export const Footer = (props: FooterProps): ReactElement => {
     return date.getFullYear();
   };
 
+  const handleNavigate = (url: string) => {
+    return window.open(url, "_blank");
+  };
+
   return (
     <MuiFooter>
       <Grid container padding={5} textAlign={"justify"} spacing={10}>
         <Grid
           item
           xs={12}
-          sm={12}
           md={6}
-          lg={6}
           sx={{ display: "flex", justifyContent: "center" }}
         >
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur
-          unde quam animi sed magni reprehenderit ratione fugiat laudantium
-          impedit corrupti. Doloribus quisquam repellendus ratione molestiae
-          dolor asperiores? Corporis, dolor sint.
+          <Stack>
+            <StyledTypography>adriandp52@gmail.com</StyledTypography>
+            <StyledTypography>Laguna, Philippines</StyledTypography>
+            <StyledTypography>+63 926 391 2007</StyledTypography>
+          </Stack>
         </Grid>
         <Grid
           item
           xs={12}
-          sm={12}
           md={6}
-          lg={6}
           sx={{ display: "flex", justifyContent: "center" }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut facere est
-          eveniet nostrum repudiandae nemo illum eum, aperiam unde neque.
-          Aliquid quaerat harum asperiores magni distinctio tempora dolorum
-          praesentium quia!
+          <Stack direction={"row"} gap={5}>
+            {socialLinksFooter.map((item) => (
+              <IconButton onClick={() => handleNavigate(item.url)}>
+                <SvgIcons
+                  name={item.iconName as IconName}
+                  height={40}
+                  width={40}
+                  key={item.iconName}
+                />
+              </IconButton>
+            ))}
+          </Stack>
         </Grid>
       </Grid>
 
@@ -70,25 +87,21 @@ export const Footer = (props: FooterProps): ReactElement => {
         <Grid
           item
           xs={12}
-          sm={12}
-          md={12}
-          lg={6}
+          md={6}
           sx={{ display: "flex", justifyContent: "start" }}
         >
           <StyledTypography
             variant="subtitle1"
             onClick={() => scrollToSection("home")}
           >
-            @ {getYear()} Adrian Del Prado
+            &copy; {getYear()} Adrian Del Prado
           </StyledTypography>
         </Grid>
 
         <Grid
           item
           xs={12}
-          sm={12}
-          md={12}
-          lg={6}
+          md={6}
           sx={{ display: "flex", justifyContent: "end" }}
         >
           <Stack direction={"row"} gap={4}>
