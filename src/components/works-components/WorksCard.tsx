@@ -1,12 +1,15 @@
-import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import { WorksCardProps } from "./types";
+
 import { ReactElement } from "react";
+
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+
 import theme from "~/theme";
 
-interface WorksCardProps {
-  image: string;
-  title: string;
-  tech: string[];
-}
 export const WorksCard = (props: WorksCardProps): ReactElement => {
   const { image, title, tech } = props;
   return (

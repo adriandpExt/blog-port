@@ -2,18 +2,28 @@ import type { DrawerMenuProps } from "./types";
 
 import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
+import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import { Stack, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 
 import logo from "~/assets/logo.png";
 
 import { debounce } from "./utils";
+
+const MuiBox = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.background.default,
+  width: 300,
+  height: "100%",
+
+  padding: "5rem 2rem ",
+}));
 
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
@@ -82,17 +92,7 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
 
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
-      <Box
-        sx={{
-          width: 300,
-          height: "100%",
-          backgroundColor: "#EEEDEB",
-          padding: "5rem 2rem ",
-        }}
-        role="presentation"
-        onClick={onClose}
-        onKeyDown={onClose}
-      >
+      <MuiBox role="presentation" onClick={onClose} onKeyDown={onClose}>
         <Stack direction={"row"} alignItems={"center"}>
           <img src={logo} alt="logo" width={100} height={100} />
           <Typography
@@ -106,7 +106,7 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
 
         {DrawerList}
         <Divider />
-      </Box>
+      </MuiBox>
     </Drawer>
   );
 };

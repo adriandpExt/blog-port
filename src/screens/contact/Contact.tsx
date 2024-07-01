@@ -139,7 +139,7 @@ const Contact = (): ReactElement => {
           </Typography>
           <SvgIcons name="ic_whatsapp" height={40} width={40} />
         </Stack>
-        <Typography variant="h4">+63 926 391 2007</Typography>
+        <Typography variant="h5">+63 926 391 2007</Typography>
       </>
     );
   };

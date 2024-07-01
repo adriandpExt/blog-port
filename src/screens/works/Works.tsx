@@ -6,9 +6,14 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 
-import { AnimatedIcon, TitlePage, WorksCard } from "~/components";
+import {
+  AnimatedIcon,
+  TitlePage,
+  WorksCard,
+  WorksExperience,
+} from "~/components";
 
-import { projectsList } from "./utils";
+import { projectsList, workData } from "./utils";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,6 +50,17 @@ const Works = (): ReactElement => {
     >
       <Stack gap={5} sx={{ padding: 10 }}>
         <TitlePage textAlign="right" title="works." />
+
+        <Stack direction={"row"} alignItems={"center"}>
+          <AnimatedIcon icon="cmd" size={60} />
+          <Typography variant="h5">Work Experience</Typography>
+        </Stack>
+
+        <Stack direction={"row"} gap={2}>
+          {workData.map((data, id) => (
+            <WorksExperience data={data} key={id} />
+          ))}
+        </Stack>
 
         <Stack gap={2}>
           <Stack direction={"row"} alignItems={"center"} gap={2}>

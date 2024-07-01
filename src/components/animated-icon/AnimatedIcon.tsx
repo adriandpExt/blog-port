@@ -4,8 +4,9 @@ import { ReactElement } from "react";
 import developer from "./developer.json";
 import block from "./block.json";
 import email from "./email.json";
+import cmd from "./cmd.json";
 
-type AnimatedIconName = "developer" | "block" | "email";
+type AnimatedIconName = "developer" | "block" | "email" | "cmd";
 
 interface AnimatedIconProps {
   icon: AnimatedIconName;
@@ -16,6 +17,7 @@ const iconMapping: { [key in AnimatedIconName]: unknown } = {
   developer,
   block,
   email,
+  cmd,
 };
 
 export const AnimatedIcon = (props: AnimatedIconProps): ReactElement => {

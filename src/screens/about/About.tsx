@@ -10,6 +10,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import { CardImage, Skills, TitlePage } from "~/components";
+import { details } from "./utils";
 
 const About = (): ReactElement => {
   const controls = useAnimation();
@@ -29,17 +30,16 @@ const About = (): ReactElement => {
   const renderIntro = (): ReactElement => {
     return (
       <Stack gap={3}>
-        <Typography>A Frontend Developer and Software Developer.</Typography>
+        <Typography variant="h5">
+          A Frontend Developer and Software Developer.
+        </Typography>
 
         <motion.div animate={{ x: [0, 100, 0] }}>
-          <Typography textAlign={"justify"}>
-            Since 2022, I embarked on my journey into Front-End and Software
-            Development. With a passion for creating seamless and user-friendly
-            web applications, I specialize in JavaScript and have extensive
-            experience with frameworks like React and Vue. My expertise extends
-            to TypeScript and backend development using Node.js, enabling me to
-            build comprehensive and robust applications.
-          </Typography>
+          <Stack gap={5}>
+            <Typography textAlign={"justify"}>{details.intro1}</Typography>
+
+            <Typography textAlign={"justify"}>{details.intro2}</Typography>
+          </Stack>
         </motion.div>
       </Stack>
     );
