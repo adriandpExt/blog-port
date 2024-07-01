@@ -43,7 +43,9 @@ const Home = (): ReactElement => {
         >
           <Stack direction={"row"} alignItems={"center"}>
             <AnimatedIcon icon="developer" />
-            <Typography variant="h3">Hey!</Typography>
+            <Typography variant="h3" fontFamily="Ransock">
+              Hey!
+            </Typography>
           </Stack>
 
           <Typography
@@ -51,6 +53,7 @@ const Home = (): ReactElement => {
               color: theme.palette.background.default,
             }}
             variant="h2"
+            fontFamily={"Ransock"}
           >
             <ReactTyped strings={["Adrian Del Prado"]} typeSpeed={100} />
           </Typography>

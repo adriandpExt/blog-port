@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import "./global/main.css";
 
 export const theme = createTheme({
   palette: {
@@ -12,7 +13,9 @@ export const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: "Kalimer",
     h1: {
+      fontFamily: "Black History",
       color: "#333333",
     },
     h2: {

@@ -13,6 +13,7 @@ const MuiFooter = styled("footer")(({ theme }) => ({
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.background.default,
+  fontFamily: "Ransock",
   ":hover": {
     cursor: "pointer",
   },

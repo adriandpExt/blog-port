@@ -60,7 +60,11 @@ export const Appbar = (props: AppbarProps): ReactElement => {
           >
             <img src={logo} alt="logo" width={50} height={50} />
           </Avatar>
-          {!isSmallScreen && <Typography variant="h5">ADRIAN.</Typography>}
+          {!isSmallScreen && (
+            <Typography variant="h5" fontFamily="Ransock">
+              ADRIAN.
+            </Typography>
+          )}
         </Stack>
 
         <Box

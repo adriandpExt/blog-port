@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "Black History";
+  src: url("../assets/font/Black-History.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ransock";
+  src: url("../assets/font/Ransock.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Kalimer";
+  src: url("../assets/font/Kalimer.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
