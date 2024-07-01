@@ -40,6 +40,36 @@ const Works = (): ReactElement => {
     }
   }, [controls, inView]);
 
+  const renderWorkExperience = (): ReactElement => {
+    return (
+      <Stack direction={"row"} gap={2}>
+        {workData.map((data, id) => (
+          <motion.div variants={itemVariants}>
+            <WorksExperience data={data} key={id} />
+          </motion.div>
+        ))}
+      </Stack>
+    );
+  };
+
+  const renderProjects = (): ReactElement => {
+    return (
+      <Grid container spacing={4}>
+        {projectsList?.map((item, i) => (
+          <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+            <motion.div variants={itemVariants}>
+              <WorksCard
+                image={item.image}
+                title={item.title}
+                tech={item.tech}
+              />
+            </motion.div>
+          </Grid>
+        ))}
+      </Grid>
+    );
+  };
+
   return (
     <motion.div
       id="works"
@@ -55,14 +85,7 @@ const Works = (): ReactElement => {
           <AnimatedIcon icon="cmd" size={60} />
           <Typography variant="h5">Work Experience</Typography>
         </Stack>
-
-        <Stack direction={"row"} gap={2}>
-          {workData.map((data, id) => (
-            <motion.div variants={itemVariants}>
-              <WorksExperience data={data} key={id} />
-            </motion.div>
-          ))}
-        </Stack>
+        {renderWorkExperience()}
 
         <Stack gap={2}>
           <Stack direction={"row"} alignItems={"center"} gap={2}>
@@ -78,19 +101,7 @@ const Works = (): ReactElement => {
           </Typography>
         </Stack>
 
-        <Grid container spacing={4}>
-          {projectsList?.map((item, i) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
-              <motion.div variants={itemVariants}>
-                <WorksCard
-                  image={item.image}
-                  title={item.title}
-                  tech={item.tech}
-                />
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+        {renderProjects()}
       </Stack>
     </motion.div>
   );

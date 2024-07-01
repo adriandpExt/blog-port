@@ -47,6 +47,34 @@ export const Footer = (props: FooterProps): ReactElement => {
     return window.open(url, "_blank");
   };
 
+  const renderLinks = (): ReactElement => {
+    return (
+      <Stack direction={"row"} gap={2}>
+        {socialLinksFooter.map((item) => (
+          <IconButton onClick={() => handleNavigate(item.url)}>
+            <SvgIcons
+              name={item.iconName as IconName}
+              height={40}
+              width={40}
+              key={item.iconName}
+            />
+          </IconButton>
+        ))}
+      </Stack>
+    );
+  };
+
+  const renderFooterMenu = (): ReactElement => {
+    return (
+      <Stack direction={"row"} gap={4}>
+        {menuLabel?.map((item) => (
+          <StyledTypography key={item} onClick={() => scrollToSection(item)}>
+            {item}
+          </StyledTypography>
+        ))}
+      </Stack>
+    );
+  };
   return (
     <MuiFooter>
       <Grid container padding={5} textAlign={"justify"} spacing={10}>
@@ -68,18 +96,7 @@ export const Footer = (props: FooterProps): ReactElement => {
           md={6}
           sx={{ display: "flex", justifyContent: "center" }}
         >
-          <Stack direction={"row"} gap={5}>
-            {socialLinksFooter.map((item) => (
-              <IconButton onClick={() => handleNavigate(item.url)}>
-                <SvgIcons
-                  name={item.iconName as IconName}
-                  height={40}
-                  width={40}
-                  key={item.iconName}
-                />
-              </IconButton>
-            ))}
-          </Stack>
+          {renderLinks()}
         </Grid>
       </Grid>
 
@@ -104,16 +121,7 @@ export const Footer = (props: FooterProps): ReactElement => {
           md={6}
           sx={{ display: "flex", justifyContent: "end" }}
         >
-          <Stack direction={"row"} gap={4}>
-            {menuLabel?.map((item) => (
-              <StyledTypography
-                key={item}
-                onClick={() => scrollToSection(item)}
-              >
-                {item}
-              </StyledTypography>
-            ))}
-          </Stack>
+          {renderFooterMenu()}
         </Grid>
       </Grid>
     </MuiFooter>

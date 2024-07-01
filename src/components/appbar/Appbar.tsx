@@ -118,7 +118,16 @@ export const Appbar = (props: AppbarProps): ReactElement => {
           <img src={logo} alt="logo" width={50} height={50} />
         </MuiAvatar>
         {!isSmallScreen ? (
-          <Typography variant="h5" fontFamily="Ransock">
+          <Typography
+            variant="h5"
+            fontFamily="Ransock"
+            onClick={() => scrollToSection("home")}
+            sx={{
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+          >
             ADRIAN.
           </Typography>
         ) : (

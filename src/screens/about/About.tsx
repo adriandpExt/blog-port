@@ -3,7 +3,6 @@ import { ReactElement, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
@@ -67,11 +66,8 @@ const About = (): ReactElement => {
         </Grid>
 
         <Divider color="whitesmoke" />
-
-        <Box>
-          <Skills />
-        </Box>
       </Stack>
+      <Skills />
     </motion.div>
   );
 };

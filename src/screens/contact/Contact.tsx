@@ -2,6 +2,7 @@ import type { ContactForm } from "./types";
 
 import { ReactElement } from "react";
 import { useFormik } from "formik";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -9,6 +10,7 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 
 import { AnimatedIcon, SvgIcons, TitlePage } from "~/components";
 import { IconName } from "~/components/svg-icons/utils";
@@ -19,8 +21,6 @@ import {
   contactFormValidation,
   socialLinks,
 } from "./utils";
-import { Bounce, ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Contact = (): ReactElement => {
   const handleLink = (url: string) => {
@@ -114,13 +114,11 @@ const Contact = (): ReactElement => {
 
   const renderSocialLinks = (): ReactElement => {
     return (
-      <Stack gap={5} direction={"row"}>
+      <Stack gap={2} direction={"row"}>
         {socialLinks.map((item) => (
-          <SvgIcons
-            key={item.iconName}
-            name={item.iconName as IconName}
-            onClick={() => handleLink(item.url)}
-          />
+          <IconButton onClick={() => handleLink(item.url)}>
+            <SvgIcons key={item.iconName} name={item.iconName as IconName} />
+          </IconButton>
         ))}
       </Stack>
     );
