@@ -24,6 +24,14 @@ interface AppbarProps {
   menuLabel: string[];
 }
 
+const debounce = (func: () => void, wait: number) => {
+  let timeout: NodeJS.Timeout;
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func(), wait);
+  };
+};
+
 export const Appbar = (props: AppbarProps): ReactElement => {
   const { menuLabel } = props;
 
@@ -65,14 +73,6 @@ export const Appbar = (props: AppbarProps): ReactElement => {
       }
     }
   }, [menuLabel]);
-
-  const debounce = (func: () => void, wait: number) => {
-    let timeout: NodeJS.Timeout;
-    return () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func(), wait);
-    };
-  };
 
   useEffect(() => {
     const debouncedHandleScroll = debounce(handleScroll, 50);

@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { ContactForm } from "./types";
 
 export const socialLinks = [
   {
@@ -11,13 +12,13 @@ export const socialLinks = [
   },
 ];
 
-export const contactFormInitial = {
+export const contactFormInitial: ContactForm = {
   fullname: "",
   email: "",
   message: "",
 };
 
-export const contactFormValidation = yup.object({
+export const contactFormValidation = yup.object<ContactForm>({
   fullname: yup.string().required("Name is required"),
   email: yup
     .string()

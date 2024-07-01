@@ -1,3 +1,5 @@
+import type { ContactForm } from "./types";
+
 import { ReactElement } from "react";
 import { useFormik } from "formik";
 
@@ -17,16 +19,21 @@ import {
   contactFormValidation,
   socialLinks,
 } from "./utils";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = (): ReactElement => {
   const handleLink = (url: string) => {
     window.open(url, "_blank");
   };
 
-  const contactForm = useFormik({
+  const contactForm = useFormik<ContactForm>({
     initialValues: contactFormInitial,
     validationSchema: contactFormValidation,
-    onSubmit: (e) => console.log(e),
+    onSubmit: (e) => {
+      toast.success("Submitted Successfully!");
+      console.log("Form Values:", e);
+    },
   });
 
   const renderForm = (): ReactElement => {
@@ -164,6 +171,20 @@ const Contact = (): ReactElement => {
         {renderForm()}
       </Stack>
       <Divider />
+
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition={Bounce}
+      />
     </Stack>
   );
 };
