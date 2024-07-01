@@ -119,14 +119,40 @@ const Contact = (): ReactElement => {
     );
   };
 
+  const renderContactNumber = (): ReactElement => {
+    return (
+      <>
+        <Stack gap={5} direction="row" alignItems="center">
+          <Typography variant="h5" color={"GrayText"}>
+            Reach me via
+          </Typography>
+          <SvgIcons name="ic_viber" height={40} width={40} />
+          <Typography variant="h5" color={"GrayText"}>
+            or
+          </Typography>
+          <SvgIcons name="ic_whatsapp" height={40} width={40} />
+        </Stack>
+        <Typography variant="h4">+63 926 391 2007</Typography>
+      </>
+    );
+  };
+
   return (
     <Stack id="contact" sx={{ padding: 10, marginBottom: 5 }} gap={5}>
       <TitlePage title="contact." />
-      <Typography variant="h5" color={"GrayText"}>
-        Get in touch me via social media or email.
-      </Typography>
 
-      {renderSocialLinks()}
+      <Grid container alignItems={"center"} spacing={5}>
+        <Grid item xs={12} sm={12} md={12} lg={6}>
+          <Typography variant="h5" color={"GrayText"}>
+            Get in touch me via social media.
+          </Typography>
+
+          {renderSocialLinks()}
+        </Grid>
+        <Grid item xs={12} sm={12} md={12} lg={6}>
+          {renderContactNumber()}
+        </Grid>
+      </Grid>
 
       <Divider />
 
