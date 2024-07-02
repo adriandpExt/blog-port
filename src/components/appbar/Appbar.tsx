@@ -1,12 +1,5 @@
 import type { AppbarProps } from "./types";
-import {
-  ReactElement,
-  useEffect,
-  useState,
-  useCallback,
-  useRef,
-  ReactNode,
-} from "react";
+import { ReactElement, useEffect, useCallback, useRef, ReactNode } from "react";
 
 import { styled, useTheme } from "@mui/material/styles";
 
@@ -24,6 +17,7 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 
 import logo from "~/assets/logo.png";
+import useStore from "~/store/useStore";
 
 import { DrawerMenu } from "./DrawerMenu";
 import { debounce } from "./utils";
@@ -61,25 +55,18 @@ const MuiIconButton = styled(IconButton)(({ theme }) => ({
 export const Appbar = (props: AppbarProps): ReactElement => {
   const { menuLabel } = props;
 
-  const [activeSection, setActiveSection] = useState<string>("home");
-  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const {
+    activeSection,
+    setActiveSection,
+    openDrawer,
+    setOpenDrawer,
+    scrollToSection,
+  } = useStore();
 
   const isScrolling = useRef<boolean>(false);
 
   const themes = useTheme();
   const isSmallScreen = useMediaQuery(themes.breakpoints.down("md"));
-
-  const scrollToSection = (id: string): void => {
-    const section = document.getElementById(id);
-    if (section) {
-      isScrolling.current = true;
-      section.scrollIntoView({ behavior: "smooth" });
-      setActiveSection(id);
-      setTimeout(() => {
-        isScrolling.current = false;
-      }, 500);
-    }
-  };
 
   const handleScroll = useCallback((): void => {
     if (isScrolling.current) return;
@@ -100,7 +87,7 @@ export const Appbar = (props: AppbarProps): ReactElement => {
         }
       }
     }
-  }, [menuLabel]);
+  }, [menuLabel, setActiveSection]);
 
   useEffect(() => {
     const debouncedHandleScroll = debounce(handleScroll, 50);

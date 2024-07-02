@@ -27,7 +27,8 @@
     "react-toastify": "^10.0.5",
     "react-typed": "^2.0.12",
     "recharts": "^2.12.7",
-    "yup": "^1.4.0"
+    "yup": "^1.4.0",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/node": "^20.14.9",

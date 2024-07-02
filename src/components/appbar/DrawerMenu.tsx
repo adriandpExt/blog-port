@@ -1,6 +1,6 @@
 import type { DrawerMenuProps } from "./types";
 
-import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
+import { ReactElement, useCallback, useEffect, useRef } from "react";
 
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -14,6 +14,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 
 import logo from "~/assets/logo.png";
+import useStore from "~/store/useStore";
 
 import { debounce } from "./utils";
 
@@ -27,17 +28,9 @@ const MuiBox = styled(Box)(({ theme }) => ({
 
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
-
-  const [activeSection, setActiveSection] = useState<string>("home");
+  const { activeSection, setActiveSection, scrollToSection } = useStore();
 
   const isScrolling = useRef<boolean>(false);
-
-  const scrollToSection = (id: string): void => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   const handleScroll = useCallback((): void => {
     if (isScrolling.current) return;
@@ -58,7 +51,7 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
         }
       }
     }
-  }, [menuLabel]);
+  }, [menuLabel, setActiveSection]);
 
   useEffect(() => {
     const debouncedHandleScroll = debounce(handleScroll, 50);

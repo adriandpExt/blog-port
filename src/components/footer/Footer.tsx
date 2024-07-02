@@ -9,6 +9,7 @@ import { IconName } from "../svg-icons/utils";
 import { SvgIcons } from "../svg-icons";
 
 import { socialLinksFooter } from "./utils";
+import useStore from "~/store/useStore";
 
 interface FooterProps {
   menuLabel: string[];
@@ -29,13 +30,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 
 export const Footer = (props: FooterProps): ReactElement => {
   const { menuLabel } = props;
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const { scrollToSection } = useStore();
 
   const getYear = (): number => {
     const date = new Date();
@@ -83,9 +78,10 @@ export const Footer = (props: FooterProps): ReactElement => {
           sx={{ display: "flex", justifyContent: "center" }}
         >
           <Stack>
-            <StyledTypography>adriandp52@gmail.com</StyledTypography>
-            <StyledTypography>Laguna, Philippines</StyledTypography>
-            <StyledTypography>+63 926 391 2007</StyledTypography>
+            <StyledTypography>
+              "Enthusiastic Frontend and Software Developer with a Passion for
+              Crafting Engaging User Experiences."
+            </StyledTypography>
           </Stack>
         </Grid>
         <Grid
@@ -94,7 +90,13 @@ export const Footer = (props: FooterProps): ReactElement => {
           md={6}
           sx={{ display: "flex", justifyContent: "center" }}
         >
-          {renderLinks()}
+          <Stack>
+            <StyledTypography>adriandp52@gmail.com</StyledTypography>
+            <StyledTypography>Laguna, Philippines</StyledTypography>
+            <StyledTypography>+63 926 391 2007</StyledTypography>
+
+            {renderLinks()}
+          </Stack>
         </Grid>
       </Grid>
 

@@ -4,7 +4,7 @@ import "./global/main.css";
 export const theme = createTheme({
   palette: {
     background: {
-      default: "#EEF7FF",
+      default: "#EFECEC",
       paper: "#2F3645",
     },
     text: {

@@ -44,7 +44,7 @@ export const SkillsCarousel = (): ReactElement => {
       padding="2rem"
     >
       <MarqueeWrapper>
-        <MarqueeText variant="h2">{displayTexts}</MarqueeText>
+        <MarqueeText variant="h3">{displayTexts}</MarqueeText>
       </MarqueeWrapper>
     </MarqueeContainer>
   );

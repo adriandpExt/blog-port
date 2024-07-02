@@ -1,13 +1,14 @@
 import * as yup from "yup";
 import { ContactForm } from "./types";
+import { LINKS } from "~/global/enum";
 
 export const socialLinks = [
   {
-    url: "https://www.facebook.com/adrian.delprado.98/",
+    url: LINKS.facebook,
     iconName: "ic_facebook",
   },
   {
-    url: "https://www.linkedin.com/in/adrian-del-prado-285aa81b8/",
+    url: LINKS.linkedin,
     iconName: "ic_linkedin",
   },
 ];
