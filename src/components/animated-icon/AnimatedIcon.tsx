@@ -5,8 +5,16 @@ import developer from "./developer.json";
 import block from "./block.json";
 import email from "./email.json";
 import cmd from "./cmd.json";
+import whatsapp from "./whatsapp.json";
+import viber from "./viber.json";
 
-type AnimatedIconName = "developer" | "block" | "email" | "cmd";
+type AnimatedIconName =
+  | "developer"
+  | "block"
+  | "email"
+  | "cmd"
+  | "whatsapp"
+  | "viber";
 
 interface AnimatedIconProps {
   icon: AnimatedIconName;
@@ -18,6 +26,8 @@ const iconMapping: { [key in AnimatedIconName]: unknown } = {
   block,
   email,
   cmd,
+  whatsapp,
+  viber,
 };
 
 export const AnimatedIcon = (props: AnimatedIconProps): ReactElement => {

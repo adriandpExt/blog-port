@@ -127,15 +127,15 @@ const Contact = (): ReactElement => {
   const renderContactNumber = (): ReactElement => {
     return (
       <>
-        <Stack gap={5} direction="row" alignItems="center">
+        <Stack direction="row" alignItems="center">
           <Typography variant="h5" color={"GrayText"}>
             Reach me via
           </Typography>
-          <SvgIcons name="ic_viber" height={40} width={40} />
+          <AnimatedIcon icon="whatsapp" size={60} />
           <Typography variant="h5" color={"GrayText"}>
             or
           </Typography>
-          <SvgIcons name="ic_whatsapp" height={40} width={40} />
+          <AnimatedIcon icon="viber" size={70} />
         </Stack>
         <Typography variant="h5">+63 926 391 2007</Typography>
       </>

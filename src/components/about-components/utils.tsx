@@ -38,3 +38,18 @@ export const dataset = [
     tech: "Typescript",
   },
 ];
+
+export const texts = [
+  "React",
+  "Javascript",
+  "Vue",
+  "TypeScript",
+  "MySql",
+  "Node JS",
+  "MongoDB",
+  "Daisy UI",
+  "HTML",
+  "CSS",
+  "Material UI",
+  "Tailwind CSS",
+];

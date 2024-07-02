@@ -8,7 +8,7 @@ import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { CardImage, Skills, TitlePage } from "~/components";
+import { CardImage, Skills, SkillsCarousel, TitlePage } from "~/components";
 import { details } from "./utils";
 
 const About = (): ReactElement => {
@@ -66,7 +66,9 @@ const About = (): ReactElement => {
         </Grid>
 
         <Divider color="whitesmoke" />
+        <SkillsCarousel />
       </Stack>
+
       <Skills />
     </motion.div>
   );
