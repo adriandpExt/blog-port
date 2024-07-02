@@ -1,40 +1,40 @@
 export const dataset = [
   {
-    rating: 10,
+    rating: 5,
     tech: "Javascript",
   },
 
   {
-    rating: 7,
+    rating: 3,
     tech: "Vue",
   },
 
   {
-    rating: 8,
+    rating: 4,
     tech: "MySql",
   },
   {
-    rating: 10,
+    rating: 5,
     tech: "React",
   },
   {
-    rating: 8,
+    rating: 4,
     tech: "MongoDB",
   },
   {
-    rating: 10,
+    rating: 5,
     tech: "Restful Api",
   },
   {
-    rating: 8,
+    rating: 4,
     tech: "Node JS",
   },
   {
-    rating: 9,
+    rating: 4,
     tech: "Git",
   },
   {
-    rating: 10,
+    rating: 5,
     tech: "Typescript",
   },
 ];

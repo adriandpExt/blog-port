@@ -6,6 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 
 import { IWorksExperience } from "./types";
+import theme from "~/theme";
 
 interface WorksExperienceProps {
   data: IWorksExperience;
@@ -14,7 +15,7 @@ export const WorksExperience = (props: WorksExperienceProps): ReactElement => {
   const { data } = props;
   return (
     <Card sx={{ maxWidth: 345, padding: 1, background: "#fff" }}>
-      <CardContent sx={{ backgroundColor: "#EEEDEB" }}>
+      <CardContent sx={{ backgroundColor: theme.palette.background.default }}>
         <CardMedia
           sx={{ height: 100 }}
           image={data?.imageSrc}

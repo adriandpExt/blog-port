@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import { dataset } from "./utils";
 import { ReactElement } from "react";
+import theme from "~/theme";
 
 export const Skills = (): ReactElement => {
   const data = dataset.map((item) => ({
@@ -20,13 +21,13 @@ export const Skills = (): ReactElement => {
   return (
     <div
       style={{
-        backgroundColor: "#fff",
+        backgroundColor: theme.palette.background.default,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         padding: "0 5rem",
         width: "100%",
-        height: "100vh",
+        height: "50vh",
       }}
     >
       <ResponsiveContainer width="100%" height="100%">
@@ -43,7 +44,7 @@ export const Skills = (): ReactElement => {
           <XAxis dataKey="name" />
           <Tooltip />
           <Legend />
-          <Bar dataKey="rating" fill="#F4A261">
+          <Bar dataKey="rating" fill="#55AD9B">
             <LabelList dataKey="rating" position="center" />
           </Bar>
         </BarChart>
