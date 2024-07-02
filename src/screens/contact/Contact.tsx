@@ -116,8 +116,8 @@ const Contact = (): ReactElement => {
     return (
       <Stack gap={2} direction={"row"}>
         {socialLinks.map((item) => (
-          <IconButton onClick={() => handleLink(item.url)}>
-            <SvgIcons key={item.iconName} name={item.iconName as IconName} />
+          <IconButton onClick={() => handleLink(item.url)} key={item.iconName}>
+            <SvgIcons name={item.iconName as IconName} />
           </IconButton>
         ))}
       </Stack>

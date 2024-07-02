@@ -51,13 +51,11 @@ export const Footer = (props: FooterProps): ReactElement => {
     return (
       <Stack direction={"row"} gap={2}>
         {socialLinksFooter.map((item) => (
-          <IconButton onClick={() => handleNavigate(item.url)}>
-            <SvgIcons
-              name={item.iconName as IconName}
-              height={40}
-              width={40}
-              key={item.iconName}
-            />
+          <IconButton
+            onClick={() => handleNavigate(item.url)}
+            key={item.iconName}
+          >
+            <SvgIcons name={item.iconName as IconName} height={40} width={40} />
           </IconButton>
         ))}
       </Stack>

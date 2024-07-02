@@ -44,8 +44,8 @@ const Works = (): ReactElement => {
     return (
       <Stack direction={"row"} gap={2}>
         {workData.map((data, id) => (
-          <motion.div variants={itemVariants}>
-            <WorksExperience data={data} key={id} />
+          <motion.div variants={itemVariants} key={id}>
+            <WorksExperience data={data} />
           </motion.div>
         ))}
       </Stack>
