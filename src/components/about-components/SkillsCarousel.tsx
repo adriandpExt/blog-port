@@ -14,7 +14,7 @@ const MarqueeWrapper = styled(Box)({
   display: "inline-block",
   whiteSpace: "nowrap",
   position: "absolute",
-  animation: "marquee 15s linear infinite",
+  animation: "marquee 20s linear infinite",
 
   "@keyframes marquee": {
     from: {
