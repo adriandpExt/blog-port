@@ -1,55 +1,63 @@
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  LabelList,
-  ResponsiveContainer,
-} from "recharts";
-import { dataset } from "./utils";
+  Box,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { ReactElement } from "react";
 import theme from "~/theme";
+import { SvgIcons } from "../svg-icons";
+import { IconName } from "../svg-icons/utils";
 
-export const Skills = (): ReactElement => {
-  const data = dataset.map((item) => ({
-    name: item.tech,
-    rating: item.rating,
-  }));
+interface SkillsProps {
+  skills: IconName[];
+  title: string;
+}
 
+export const Skills = (props: SkillsProps): ReactElement => {
+  const { skills, title } = props;
+
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <div
-      style={{
-        backgroundColor: theme.palette.background.default,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "0 5rem",
-        width: "100%",
-        height: "50vh",
+    <Paper
+      elevation={3}
+      sx={{
+        backgroundColor: "#FFF",
+        padding: 1,
+        borderRadius: 2,
       }}
     >
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart
-          data={data}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="rating" fill="#55AD9B">
-            <LabelList dataKey="rating" position="center" />
-          </Bar>
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+      <Box
+        sx={{
+          backgroundColor: theme.palette.background.default,
+          padding: 5,
+          ":hover": {
+            backgroundColor: "#FFF",
+          },
+        }}
+      >
+        <Typography variant="h6" textAlign={"center"} fontWeight={600}>
+          {title}
+        </Typography>
+        <Divider />
+        <Box padding={5}>
+          <Grid container spacing={5} justifyContent="center">
+            {skills.map((item) => (
+              <Grid
+                item
+                xs={isSmallScreen ? 4 : Math.min(12 / skills.length, 3)}
+                key={item}
+              >
+                <SvgIcons name={item} height={60} width={60} />
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        <Divider />
+      </Box>
+    </Paper>
   );
 };
 

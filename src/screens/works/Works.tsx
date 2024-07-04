@@ -45,7 +45,9 @@ const Works = (): ReactElement => {
       <Stack direction={"row"} gap={2}>
         {workData.map((data, id) => (
           <motion.div variants={itemVariants} key={id}>
-            <WorksExperience data={data} />
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <WorksExperience data={data} />
+            </motion.div>
           </motion.div>
         ))}
       </Stack>
@@ -58,11 +60,13 @@ const Works = (): ReactElement => {
         {projectsList?.map((item, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
             <motion.div variants={itemVariants}>
-              <WorksCard
-                image={item.image}
-                title={item.title}
-                tech={item.tech}
-              />
+              <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+                <WorksCard
+                  image={item.image}
+                  title={item.title}
+                  tech={item.tech}
+                />
+              </motion.div>
             </motion.div>
           </Grid>
         ))}

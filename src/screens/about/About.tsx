@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import { CardImage, Skills, SkillsCarousel, TitlePage } from "~/components";
-import { details } from "./utils";
+import { backend, details, frontend } from "./utils";
 
 const About = (): ReactElement => {
   const controls = useAnimation();
@@ -61,15 +61,29 @@ const About = (): ReactElement => {
           </Grid>
 
           <Grid item xs={12} lg={6} display={"flex"} justifyContent={"center"}>
-            <CardImage />
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <CardImage />
+            </motion.div>
           </Grid>
         </Grid>
 
         <Divider color="whitesmoke" />
         <SkillsCarousel />
-      </Stack>
 
-      <Skills />
+        <Grid container spacing={3}>
+          <Grid item xs={12} lg={6}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <Skills title="FRONTEND" skills={frontend} />
+            </motion.div>
+          </Grid>
+
+          <Grid item xs={12} lg={6}>
+            <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
+              <Skills title="BACKEND" skills={backend} />
+            </motion.div>
+          </Grid>
+        </Grid>
+      </Stack>
     </motion.div>
   );
 };
