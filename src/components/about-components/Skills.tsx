@@ -1,13 +1,6 @@
-import {
-  Box,
-  Divider,
-  Grid,
-  Paper,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Card, CardContent, Grid, Typography } from "@mui/material";
 import { ReactElement } from "react";
-import theme from "~/theme";
+
 import { SvgIcons } from "../svg-icons";
 import { IconName } from "../svg-icons/utils";
 
@@ -19,45 +12,27 @@ interface SkillsProps {
 export const Skills = (props: SkillsProps): ReactElement => {
   const { skills, title } = props;
 
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        backgroundColor: "#FFF",
-        padding: 1,
-        borderRadius: 2,
-      }}
-    >
-      <Box
+    <>
+      <Card
         sx={{
-          backgroundColor: theme.palette.background.default,
-          padding: 5,
-          ":hover": {
-            backgroundColor: "#FFF",
-          },
+          backgroundColor: "#fff",
+          padding: 1,
         }}
       >
-        <Typography variant="h6" textAlign={"center"} fontWeight={600}>
-          {title}
-        </Typography>
-        <Divider />
-        <Box padding={5}>
-          <Grid container spacing={5} justifyContent="center">
+        <CardContent>
+          <Typography variant="h6" fontWeight={600} sx={{ marginBottom: 3 }}>
+            {title}
+          </Typography>
+
+          <Grid container spacing={1}>
             {skills.map((item) => (
-              <Grid
-                item
-                xs={isSmallScreen ? 4 : Math.min(12 / skills.length, 3)}
-                key={item}
-              >
-                <SvgIcons name={item} height={60} width={60} />
-              </Grid>
+              <SvgIcons name={item} height={60} width={60} />
             ))}
           </Grid>
-        </Box>
-        <Divider />
-      </Box>
-    </Paper>
+        </CardContent>
+      </Card>
+    </>
   );
 };
 
