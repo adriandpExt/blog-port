@@ -1,4 +1,4 @@
-import { Card, CardContent, Grid, Typography } from "@mui/material";
+import { Card, CardContent, Divider, Grid, Typography } from "@mui/material";
 import { ReactElement } from "react";
 
 import { SvgIcons } from "../svg-icons";
@@ -24,14 +24,21 @@ export const Skills = (props: SkillsProps): ReactElement => {
         <CardContent
           sx={{
             backgroundColor: theme.palette.background.default,
-            padding: 1,
+
+            padding: 2,
             ":hover": {
               backgroundColor: "#fff",
             },
           }}
         >
-          <Typography variant="h6" fontWeight={600} sx={{ marginBottom: 3 }}>
+          <Typography
+            variant="h6"
+            fontWeight={600}
+            textAlign={"center"}
+            sx={{ marginBottom: 3 }}
+          >
             {title}
+            <Divider />
           </Typography>
 
           <Grid container spacing={1}>
