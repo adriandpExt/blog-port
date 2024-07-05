@@ -3,6 +3,7 @@ import { ReactElement } from "react";
 
 import { SvgIcons } from "../svg-icons";
 import { IconName } from "../svg-icons/utils";
+import theme from "~/theme";
 
 interface SkillsProps {
   skills: IconName[];
@@ -20,7 +21,15 @@ export const Skills = (props: SkillsProps): ReactElement => {
           padding: 1,
         }}
       >
-        <CardContent>
+        <CardContent
+          sx={{
+            backgroundColor: theme.palette.background.default,
+            padding: 1,
+            ":hover": {
+              backgroundColor: "#fff",
+            },
+          }}
+        >
           <Typography variant="h6" fontWeight={600} sx={{ marginBottom: 3 }}>
             {title}
           </Typography>
