@@ -52,4 +52,5 @@ export const texts = [
   "CSS",
   "Material UI",
   "Tailwind CSS",
+  "Express",
 ];
