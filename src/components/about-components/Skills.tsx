@@ -41,7 +41,13 @@ export const Skills = (props: SkillsProps): ReactElement => {
             <Divider />
           </Typography>
 
-          <Grid container spacing={1}>
+          <Grid
+            container
+            spacing={2}
+            display={"flex"}
+            justifyContent={"center"}
+            alignItems={"center"}
+          >
             {skills.map((item) => (
               <SvgIcons name={item} height={60} width={60} />
             ))}

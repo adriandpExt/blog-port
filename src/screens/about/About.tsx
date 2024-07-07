@@ -68,7 +68,6 @@ const About = (): ReactElement => {
         </Grid>
 
         <Divider color="whitesmoke" />
-        <SkillsCarousel />
 
         <Grid container spacing={3}>
           <Grid item xs={12} lg={6}>
@@ -84,6 +83,7 @@ const About = (): ReactElement => {
           </Grid>
         </Grid>
       </Stack>
+      <SkillsCarousel />
     </motion.div>
   );
 };
