@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { Box, Typography } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 import { texts } from "./utils";
 
 const MarqueeContainer = styled(Box)({
@@ -26,11 +26,12 @@ const MarqueeWrapper = styled(Box)({
   },
 });
 
-const MarqueeText = styled(Typography)({
+const MarqueeText = styled(Typography)(({ theme }) => ({
+  color: theme.palette.background.default,
   display: "inline-block",
   paddingRight: "100%",
   fontFamily: "Ransock",
-});
+}));
 
 export const SkillsCarousel = (): ReactElement => {
   const displayTexts = texts.join(" \u00A0 \u00A0 \u00A0 \u00A0");
@@ -40,8 +41,9 @@ export const SkillsCarousel = (): ReactElement => {
       display="flex"
       justifyContent="flex-start"
       alignItems="center"
-      height="100px"
+      height={300}
       padding="2rem"
+      bgcolor="#2F3645"
     >
       <MarqueeWrapper>
         <MarqueeText variant="h3">{displayTexts}</MarqueeText>

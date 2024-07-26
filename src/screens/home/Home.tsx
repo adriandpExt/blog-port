@@ -75,8 +75,12 @@ const Home = (): ReactElement => {
           </Typography>
           <Button
             variant="contained"
-            sx={{ width: "10rem" }}
-            color="info"
+            // sx={{ width: "10rem" }}
+            sx={{
+              width: "10rem",
+              backgroundColor: theme.palette.background.paper,
+            }}
+            // color="info"
             onClick={() => scrollToSection("about")}
           >
             Learn More
