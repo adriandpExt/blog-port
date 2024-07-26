@@ -1,4 +1,4 @@
-import type { DrawerMenuProps } from "./types";
+import type { DrawerMenuProps, FloatingListItemButtonProps } from "./types";
 
 import { ReactElement, useCallback, useEffect, useRef } from "react";
 
@@ -22,12 +22,28 @@ const MuiBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   width: 300,
   height: "100%",
-
   padding: "5rem 2rem ",
+}));
+
+const FloatingListItemButton = styled(ListItemButton, {
+  shouldForwardProp: (prop) => prop !== "activeSection" && prop !== "text",
+})<FloatingListItemButtonProps>(({ theme, activeSection, text }) => ({
+  borderLeft:
+    activeSection === text ? `4px solid ${theme.palette.background.paper}` : "",
+  transition: "all 0.5s ease",
+
+  "&:hover": {
+    transform: "translateY(-4px)",
+    borderLeft: "none",
+    border: `.2rem solid ${theme.palette.background.paper}`,
+    boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
+    borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
+  },
 }));
 
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
+
   const { activeSection, setActiveSection, scrollToSection } = useStore();
 
   const isScrolling = useRef<boolean>(false);
@@ -65,19 +81,14 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const DrawerList = (
     <List>
       {menuLabel.map((text, index) => (
-        <ListItem
-          key={text}
-          disablePadding
-          onClick={() => scrollToSection(text)}
-        >
-          <ListItemButton
+        <ListItem key={text} onClick={() => scrollToSection(text)}>
+          <FloatingListItemButton
             key={index}
-            sx={{
-              borderLeft: activeSection === text ? "4px solid #2F3645" : "",
-            }}
+            activeSection={activeSection}
+            text={text}
           >
             <ListItemText primary={text.toUpperCase()} />
-          </ListItemButton>
+          </FloatingListItemButton>
         </ListItem>
       ))}
     </List>

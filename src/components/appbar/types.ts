@@ -7,3 +7,8 @@ export interface DrawerMenuProps {
 export interface AppbarProps {
   menuLabel: string[];
 }
+
+export interface FloatingListItemButtonProps {
+  activeSection: string;
+  text: string;
+}
