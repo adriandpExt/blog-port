@@ -26,7 +26,7 @@ const MuiBox = styled(Box)(({ theme }) => ({
 }));
 
 const FloatingListItemButton = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== "activeSection" && prop !== "text",
+  shouldForwardProp: (prop) => prop == "activeSection" && prop == "text",
 })<FloatingListItemButtonProps>(({ theme, activeSection, text }) => ({
   borderLeft:
     activeSection === text ? `4px solid ${theme.palette.background.paper}` : "",
