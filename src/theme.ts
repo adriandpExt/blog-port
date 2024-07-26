@@ -12,6 +12,7 @@ export const theme = createTheme({
       secondary: "#666666",
     },
   },
+
   typography: {
     fontFamily: "Kalimer",
     h1: {
