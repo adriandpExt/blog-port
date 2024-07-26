@@ -105,7 +105,7 @@ export const Footer = (props: FooterProps): ReactElement => {
           item
           xs={12}
           md={6}
-          sx={{ display: "flex", justifyContent: "start" }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
           <StyledTypography
             variant="subtitle1"
@@ -119,7 +119,7 @@ export const Footer = (props: FooterProps): ReactElement => {
           item
           xs={12}
           md={6}
-          sx={{ display: "flex", justifyContent: "end" }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
           {renderFooterMenu()}
         </Grid>
