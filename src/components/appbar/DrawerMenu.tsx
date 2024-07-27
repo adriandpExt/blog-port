@@ -78,21 +78,19 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
     };
   }, [handleScroll]);
 
-  const DrawerList = (
-    <List>
-      {menuLabel.map((text, index) => (
-        <ListItem key={text} onClick={() => scrollToSection(text)}>
-          <FloatingListItemButton
-            key={index}
-            activeSection={activeSection}
-            text={text}
-          >
-            <ListItemText primary={text.toUpperCase()} />
-          </FloatingListItemButton>
-        </ListItem>
-      ))}
-    </List>
-  );
+  const DrawerList = () => {
+    return (
+      <List>
+        {menuLabel.map((text) => (
+          <ListItem key={text} onClick={() => scrollToSection(text)}>
+            <FloatingListItemButton activeSection={activeSection} text={text}>
+              <ListItemText primary={text.toUpperCase()} />
+            </FloatingListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    );
+  };
 
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
@@ -108,7 +106,7 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
           </Typography>
         </Stack>
 
-        {DrawerList}
+        {DrawerList()}
         <Divider />
       </MuiBox>
     </Drawer>
