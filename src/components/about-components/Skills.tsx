@@ -49,7 +49,7 @@ export const Skills = (props: SkillsProps): ReactElement => {
             alignItems={"center"}
           >
             {skills.map((item) => (
-              <SvgIcons name={item} height={60} width={60} />
+              <SvgIcons key={item} name={item} height={60} width={60} />
             ))}
           </Grid>
         </CardContent>
