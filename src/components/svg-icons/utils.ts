@@ -14,5 +14,4 @@ export type IconName =
   | "ic_tailwind"
   | "ic_chakra"
   | "ic_nodejs"
-  | "ic_express"
-  | "ic_coder";
+  | "ic_express";
