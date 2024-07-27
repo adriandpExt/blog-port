@@ -1,6 +1,6 @@
 import type { DrawerMenuProps } from "./types";
 
-import { ReactElement } from "react"; //useCallback, useEffect, useRef
+import { ReactElement, useCallback, useEffect, useRef } from "react";
 
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -8,12 +8,15 @@ import Stack from "@mui/material/Stack";
 import Drawer from "@mui/material/Drawer";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import List from "@mui/material/List";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+
 import logo from "~/assets/logo.png";
 import useStore from "~/store/useStore";
 
-// import { debounce } from "./utils";
+import { debounce } from "./utils";
 import theme from "~/theme";
-import { List, ListItemButton, ListItemText } from "@mui/material";
 
 const MuiBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -25,39 +28,39 @@ const MuiBox = styled(Box)(({ theme }) => ({
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
 
-  const { activeSection, scrollToSection } = useStore();
+  const { activeSection, setActiveSection, scrollToSection } = useStore();
 
-  // const isScrolling = useRef<boolean>(false);
+  const isScrolling = useRef<boolean>(false);
 
-  // const handleScroll = useCallback((): void => {
-  //   if (isScrolling.current) return;
+  const handleScroll = useCallback((): void => {
+    if (isScrolling.current) return;
 
-  //   const sections = menuLabel.map((label) => document.getElementById(label));
-  //   const scrollPosition = window.scrollY + 100;
+    const sections = menuLabel.map((label) => document.getElementById(label));
+    const scrollPosition = window.scrollY + 100;
 
-  //   for (const section of sections) {
-  //     if (section) {
-  //       const offsetTop = section.offsetTop;
-  //       const offsetHeight = section.offsetHeight;
-  //       if (
-  //         scrollPosition >= offsetTop &&
-  //         scrollPosition < offsetTop + offsetHeight
-  //       ) {
-  //         setActiveSection(section.id);
-  //         break;
-  //       }
-  //     }
-  //   }
-  // }, [menuLabel, setActiveSection]);
+    for (const section of sections) {
+      if (section) {
+        const offsetTop = section.offsetTop;
+        const offsetHeight = section.offsetHeight;
+        if (
+          scrollPosition >= offsetTop &&
+          scrollPosition < offsetTop + offsetHeight
+        ) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+    }
+  }, [menuLabel, setActiveSection]);
 
-  // useEffect(() => {
-  //   const debouncedHandleScroll = debounce(handleScroll, 50);
+  useEffect(() => {
+    const debouncedHandleScroll = debounce(handleScroll, 50);
 
-  //   window.addEventListener("scroll", debouncedHandleScroll);
-  //   return () => {
-  //     window.removeEventListener("scroll", debouncedHandleScroll);
-  //   };
-  // }, [handleScroll]);
+    window.addEventListener("scroll", debouncedHandleScroll);
+    return () => {
+      window.removeEventListener("scroll", debouncedHandleScroll);
+    };
+  }, [handleScroll]);
 
   const DrawerList = () => {
     return (
