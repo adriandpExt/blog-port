@@ -26,22 +26,6 @@ const MuiBox = styled(Box)(({ theme }) => ({
   padding: "5rem 2rem ",
 }));
 
-// const FloatingListItemButton = styled(ListItemButton, {
-//   shouldForwardProp: (prop) => prop !== "activeSection" && prop !== "text",
-// })<FloatingListItemButtonProps>(({ theme, activeSection, text }) => ({
-//   borderLeft:
-//     activeSection === text ? `4px solid ${theme.palette.background.paper}` : "",
-//   transition: "all 0.5s ease",
-
-//   "&:hover": {
-//     transform: "translateY(-4px)",
-//     borderLeft: "none",
-//     border: `.2rem solid ${theme.palette.background.paper}`,
-//     boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
-//     borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
-//   },
-// }));
-
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
 
@@ -92,13 +76,13 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
                     : "",
                 transition: "all 0.5s ease",
 
-                "&:hover": {
-                  transform: "translateY(-4px)",
-                  borderLeft: "none",
-                  border: `.2rem solid ${theme.palette.background.paper}`,
-                  boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
-                  borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
-                },
+                // "&:hover": {
+                //   transform: "translateY(-4px)",
+                //   borderLeft: "none",
+                //   border: `.2rem solid ${theme.palette.background.paper}`,
+                //   boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
+                //   borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
+                // },
               }}
             >
               <ListItemText primary={text.toUpperCase()} />
