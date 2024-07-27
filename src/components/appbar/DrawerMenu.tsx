@@ -13,7 +13,7 @@ import useStore from "~/store/useStore";
 
 import { debounce } from "./utils";
 import theme from "~/theme";
-import { List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { List, ListItemButton, ListItemText } from "@mui/material";
 
 const MuiBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -63,18 +63,18 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
     return (
       <List>
         {menuLabel.map((text) => (
-          <ListItem key={text} onClick={() => scrollToSection(text)}>
-            <ListItemButton
-              sx={{
-                borderLeft:
-                  activeSection === text
-                    ? `4px solid ${theme.palette.background.paper}`
-                    : "",
-              }}
-            >
-              <ListItemText primary={text.toUpperCase()} />
-            </ListItemButton>
-          </ListItem>
+          <ListItemButton
+            key={text}
+            onClick={() => scrollToSection(text)}
+            sx={{
+              borderLeft:
+                activeSection === text
+                  ? `4px solid ${theme.palette.background.paper}`
+                  : "",
+            }}
+          >
+            <ListItemText primary={text.toUpperCase()} />
+          </ListItemButton>
         ))}
       </List>
     );
