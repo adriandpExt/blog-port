@@ -1,4 +1,4 @@
-import type { DrawerMenuProps, FloatingListItemButtonProps } from "./types";
+import type { DrawerMenuProps } from "./types";
 
 import { ReactElement, useCallback, useEffect, useRef } from "react";
 
@@ -17,6 +17,7 @@ import logo from "~/assets/logo.png";
 import useStore from "~/store/useStore";
 
 import { debounce } from "./utils";
+import theme from "~/theme";
 
 const MuiBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -25,21 +26,21 @@ const MuiBox = styled(Box)(({ theme }) => ({
   padding: "5rem 2rem ",
 }));
 
-const FloatingListItemButton = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== "activeSection" && prop !== "text",
-})<FloatingListItemButtonProps>(({ theme, activeSection, text }) => ({
-  borderLeft:
-    activeSection === text ? `4px solid ${theme.palette.background.paper}` : "",
-  transition: "all 0.5s ease",
+// const FloatingListItemButton = styled(ListItemButton, {
+//   shouldForwardProp: (prop) => prop !== "activeSection" && prop !== "text",
+// })<FloatingListItemButtonProps>(({ theme, activeSection, text }) => ({
+//   borderLeft:
+//     activeSection === text ? `4px solid ${theme.palette.background.paper}` : "",
+//   transition: "all 0.5s ease",
 
-  "&:hover": {
-    transform: "translateY(-4px)",
-    borderLeft: "none",
-    border: `.2rem solid ${theme.palette.background.paper}`,
-    boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
-    borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
-  },
-}));
+//   "&:hover": {
+//     transform: "translateY(-4px)",
+//     borderLeft: "none",
+//     border: `.2rem solid ${theme.palette.background.paper}`,
+//     boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
+//     borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
+//   },
+// }));
 
 export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
   const { menuLabel, open, onClose } = props;
@@ -83,9 +84,25 @@ export const DrawerMenu = (props: DrawerMenuProps): ReactElement => {
       <List>
         {menuLabel.map((text) => (
           <ListItem key={text} onClick={() => scrollToSection(text)}>
-            <FloatingListItemButton activeSection={activeSection} text={text}>
+            <ListItemButton
+              sx={{
+                borderLeft:
+                  activeSection === text
+                    ? `4px solid ${theme.palette.background.paper}`
+                    : "",
+                transition: "all 0.5s ease",
+
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  borderLeft: "none",
+                  border: `.2rem solid ${theme.palette.background.paper}`,
+                  boxShadow: `0px 4px 10px ${theme.palette.background.paper}`,
+                  borderRadius: "0.3rem 1.5rem .3rem 1.5rem",
+                },
+              }}
+            >
               <ListItemText primary={text.toUpperCase()} />
-            </FloatingListItemButton>
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
