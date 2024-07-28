@@ -56,14 +56,14 @@ const About = (): ReactElement => {
         <TitlePage title="about." />
 
         <Grid container spacing={4}>
-          <Grid item xs={12} lg={6}>
-            {renderIntro()}
-          </Grid>
-
           <Grid item xs={12} lg={6} display={"flex"} justifyContent={"center"}>
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 1 }}>
               <CardImage />
             </motion.div>
+          </Grid>
+
+          <Grid item xs={12} lg={6}>
+            {renderIntro()}
           </Grid>
         </Grid>
 

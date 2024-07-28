@@ -6,8 +6,9 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { AnimatedIcon } from "~/components";
+import { AnimatedIcon, SvgIcons } from "~/components";
 import theme from "~/theme";
+import { Grid } from "@mui/material";
 
 const Home = (): ReactElement => {
   const scrollToSection = (id: string) => {
@@ -18,29 +19,19 @@ const Home = (): ReactElement => {
   };
 
   return (
-    <div
+    <Box
       id="home"
-      style={{
-        backgroundImage: `url(https://i.pinimg.com/originals/99/fa/00/99fa00eeccdaf09a0af865fe6a641d47.jpg)`,
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        objectFit: "cover",
-        width: "100%",
-        height: "100%",
+      sx={{
+        margin: "10rem 3rem 3rem 3rem",
       }}
     >
-      <Box
-        sx={{
-          height: "100%",
-          width: "50%",
-          margin: "10rem 3rem 10rem 3rem",
-        }}
+      <Grid
+        container
+        padding={5}
+        spacing={3}
+        sx={{ color: theme.palette.background.paper }}
       >
-        <Stack
-          gap={3}
-          padding={5}
-          sx={{ color: theme.palette.background.default }}
-        >
+        <Grid item xs={12} lg={6}>
           <Stack direction={"row"} alignItems={"center"}>
             <AnimatedIcon icon="developer" />
             <Typography variant="h3" fontFamily="Ransock">
@@ -48,20 +39,11 @@ const Home = (): ReactElement => {
             </Typography>
           </Stack>
 
-          <Typography
-            sx={{
-              color: theme.palette.background.default,
-            }}
-            variant="h2"
-            fontFamily={"Ransock"}
-          >
+          <Typography variant="h2" fontFamily={"Ransock"}>
             <ReactTyped strings={["Adrian Del Prado"]} typeSpeed={100} />
           </Typography>
 
-          <Typography
-            sx={{ color: theme.palette.background.default }}
-            variant="h5"
-          >
+          <Typography variant="h5">
             <ReactTyped
               strings={["FRONTEND DEVELOPER", " SOFTWARE DEVELOPER"]}
               typeSpeed={100}
@@ -75,19 +57,21 @@ const Home = (): ReactElement => {
           </Typography>
           <Button
             variant="contained"
-            // sx={{ width: "10rem" }}
             sx={{
               width: "10rem",
               backgroundColor: theme.palette.background.paper,
             }}
-            // color="info"
             onClick={() => scrollToSection("about")}
           >
             Learn More
           </Button>
-        </Stack>
-      </Box>
-    </div>
+        </Grid>
+
+        <Grid item xs={12} lg={6}>
+          <SvgIcons name="ic_manOnTable" width={"auto"} height={"auto"} />
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 

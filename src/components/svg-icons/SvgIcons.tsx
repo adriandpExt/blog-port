@@ -6,8 +6,8 @@ import { IconName } from "./utils";
 
 type SvgIconProps = {
   name: IconName;
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
 } & MuiSvgIconProps;
 
 export const SvgIcons = (props: SvgIconProps): ReactElement => {
